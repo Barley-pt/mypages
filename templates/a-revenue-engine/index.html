@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACP GROUP | CRM, Automation and AI for Sales Teams</title>
+<meta name="description" content="ACP GROUP builds CRM systems, automations and AI agents that make your team sell more. Bitrix24 Gold Partner since 2018.">
+<meta name="theme-color" content="#06121D">
+<link rel="icon" href="../../assets/acp-logo-on-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+:root {
+  --bg: #06121D;
+  --surface: #0A1C2B;
+  --surface-2: #0E2638;
+  --navy: #0E3A5A;
+  --line: rgba(233, 238, 243, 0.09);
+  --line-strong: rgba(233, 238, 243, 0.16);
+  --text: #E9EEF3;
+  --muted: #9AABBB;
+  --accent: #E74D4A;
+  --accent-hover: #F0605D;
+  --accent-soft: rgba(231, 77, 74, 0.13);
+  --brand-grad: linear-gradient(135deg, #173A5A 0%, #4D3F56 45%, #8D4551 72%, #E44D4A 100%);
+  --r-card: 14px;
+  --r-input: 10px;
+  --nav-h: 68px;
+  --max: 1240px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--nav-h); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; }
+p { margin: 0; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.section { padding: 112px 0; position: relative; }
+.h2 { font-size: clamp(2rem, 4.2vw, 3.3rem); max-width: 18ch; }
+.lead { color: var(--muted); max-width: 60ch; margin-top: 18px; font-size: 1.08rem; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; display: block; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; border-radius: 999px; padding: 15px 26px; font: 700 15px/1 "Manrope", sans-serif; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .25s var(--ease), border-color .25s var(--ease), transform .2s var(--ease); }
+.btn:active { transform: translateY(1px) scale(0.985); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-ghost { color: var(--text); border-color: var(--line-strong); background: transparent; }
+.btn-ghost:hover { border-color: var(--text); }
+.btn i { font-size: 18px; transition: transform .25s var(--ease); }
+.btn:hover i { transform: translateX(3px); }
+
+/* Nav */
+.nav { position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 50; background: rgba(6, 18, 29, 0.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid var(--line); }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 15px; transition: color .2s; }
+.nav-links a:hover { color: var(--text); }
+.nav .btn { padding: 11px 20px; font-size: 14px; }
+.nav-toggle { display: none; background: none; border: 1px solid var(--line-strong); color: var(--text); border-radius: 999px; width: 44px; height: 44px; font-size: 20px; cursor: pointer; align-items: center; justify-content: center; }
+.mobile-menu { display: none; }
+@media (max-width: 960px) {
+  .nav-links, .nav .btn-primary { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .mobile-menu { position: fixed; inset: var(--nav-h) 0 auto 0; z-index: 49; background: var(--bg); border-bottom: 1px solid var(--line); padding: 16px 24px 28px; }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a:not(.btn) { display: block; padding: 14px 0; text-decoration: none; font-weight: 700; font-size: 20px; border-bottom: 1px solid var(--line); }
+  .mobile-menu .btn { margin-top: 22px; width: 100%; justify-content: center; }
+}
+
+/* Hero */
+.hero { padding: calc(var(--nav-h) + 64px) 0 72px; min-height: 100dvh; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 900px; height: 900px; right: -260px; top: -320px; background: radial-gradient(closest-side, rgba(14, 58, 90, 0.75), transparent 70%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 620px; height: 620px; right: 10%; bottom: -380px; background: radial-gradient(closest-side, rgba(231, 77, 74, 0.16), transparent 70%); pointer-events: none; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); letter-spacing: -0.04em; line-height: 1.02; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--muted); font-size: 1.18rem; margin-top: 24px; max-width: 44ch; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+
+/* Pipeline component */
+.pipeline { background: linear-gradient(180deg, rgba(14, 38, 56, 0.9), rgba(10, 28, 43, 0.9)); border: 1px solid var(--line-strong); border-radius: 18px; padding: 18px; box-shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
+.pl-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 6px 16px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.pl-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.pl-title i { color: var(--accent); font-size: 18px; }
+.pl-title small { color: var(--muted); font-weight: 500; font-size: 12px; }
+.pl-won { text-align: right; }
+.pl-won > span { display: block; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.pl-won strong { font-family: var(--mono); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.pl-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.pl-col { background: rgba(6, 18, 29, 0.55); border-radius: 12px; padding: 10px; min-height: 318px; }
+.pl-col header { display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; font-weight: 700; color: var(--muted); padding: 2px 2px 10px; }
+.pl-col header b { font-family: var(--mono); font-weight: 600; color: var(--text); background: rgba(255,255,255,0.06); border-radius: 999px; padding: 1px 8px; font-size: 11px; }
+.pl-col[data-stage="3"] header { color: #7FD1A8; }
+.pl-list { display: flex; flex-direction: column; gap: 8px; }
+.pl-card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; font-size: 12.5px; line-height: 1.35; will-change: transform; }
+.pl-card strong { display: block; font-weight: 700; color: var(--text); margin: 6px 0 4px; }
+.pl-src { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-size: 11px; font-weight: 600; }
+.pl-src i { font-size: 13px; }
+.pl-val { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.pl-col[data-stage="3"] .pl-card { border-color: rgba(127, 209, 168, 0.28); }
+.pl-col[data-stage="3"] .pl-val { color: #7FD1A8; }
+.hero .pl-note { font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 12px; padding: 0 6px; max-width: none; }
+
+/* Trust */
+.trust { padding: 56px 0 96px; border-top: 1px solid var(--line); }
+.trust-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 48px; }
+.badges { display: flex; flex-wrap: wrap; gap: 12px; }
+.badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 9px 16px 9px 12px; font-weight: 700; font-size: 14px; text-decoration: none; }
+.badge i { font-size: 20px; color: #E8B04A; }
+.badge.sf i { color: #4FA9E8; }
+.clients { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 40px; }
+.client { font-weight: 800; font-size: 19px; letter-spacing: -0.02em; color: rgba(233, 238, 243, 0.62); white-space: nowrap; }
+.client.serif { font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: 0; }
+.client.wide { letter-spacing: 0.18em; font-size: 17px; }
+.client.light { font-weight: 500; }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
+.stat strong { display: block; font-family: var(--mono); font-weight: 600; font-size: clamp(2rem, 3.6vw, 3rem); letter-spacing: -0.04em; line-height: 1; }
+.stat strong sup { color: var(--accent); font-size: 0.55em; vertical-align: top; position: relative; top: 0.15em; margin-left: 2px; }
+.stat > span { display: block; color: var(--muted); margin-top: 10px; font-size: 15px; }
+
+/* Services sticky stack */
+.services-intro { padding-bottom: 0; }
+.stack-card { min-height: 100dvh; display: flex; align-items: center; padding: calc(var(--nav-h) + 24px) 0 32px; }
+.stack-card .panel { width: 100%; border-radius: var(--r-card); border: 1px solid var(--line-strong); padding: clamp(28px, 4vw, 56px); display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; transform-origin: 50% 0; box-shadow: 0 -30px 80px -40px rgba(0,0,0,0.8); }
+.panel-crm { background: var(--surface); }
+.panel-auto { background: linear-gradient(160deg, #0E3A5A 0%, #0A2437 100%); }
+.panel-mos { background: linear-gradient(135deg, #1A2E44 0%, #3B3550 50%, #6E3E4E 100%); }
+.panel h3 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); }
+.panel .kicker { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--accent); margin-bottom: 18px; }
+.panel-mos .kicker { color: #FFB4A8; }
+.panel .kicker i { font-size: 20px; }
+.panel p.body { color: rgba(233, 238, 243, 0.78); margin-top: 18px; max-width: 52ch; }
+.points { list-style: none; padding: 0; margin: 26px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+.points li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; font-weight: 600; }
+.points i { color: var(--accent); margin-top: 3px; flex: none; }
+.panel-mos .points i { color: #FFB4A8; }
+.panel-side { border-radius: 12px; padding: 28px; background: rgba(6, 18, 29, 0.5); border: 1px solid var(--line); }
+.panel-side .label { color: var(--muted); font-size: 14px; font-weight: 600; }
+.panel-side .big { font-family: var(--mono); font-weight: 600; font-size: clamp(2.2rem, 4vw, 3.2rem); letter-spacing: -0.04em; margin: 8px 0 6px; line-height: 1.05; }
+.panel-side .small { color: var(--muted); font-size: 14px; }
+.panel-side .btn { margin-top: 24px; }
+.proof { display: grid; gap: 16px; }
+.proof div { display: flex; align-items: baseline; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.proof div:last-child { border-bottom: 0; padding-bottom: 0; }
+.proof strong { font-family: var(--mono); font-weight: 600; font-size: 2.3rem; letter-spacing: -0.04em; min-width: 3.4ch; color: var(--text); }
+.proof span { color: rgba(233,238,243,0.8); font-size: 15px; }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+.calc-box { background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-card); padding: 36px; }
+.calc-box label { font-weight: 700; display: block; }
+.calc-box label small { color: var(--muted); font-weight: 500; display: block; font-size: 14px; margin-top: 2px; }
+.range-row { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
+.range-row output { font-family: var(--mono); font-weight: 600; font-size: 20px; min-width: 10ch; text-align: right; }
+input[type="range"] { flex: 1; -webkit-appearance: none; appearance: none; background: transparent; height: 28px; }
+input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent) var(--p, 31%), rgba(255,255,255,0.12) var(--p, 31%)); }
+input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: rgba(255,255,255,0.12); }
+input[type="range"]::-moz-range-progress { height: 4px; border-radius: 4px; background: var(--accent); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 5px solid var(--accent); margin-top: -10px; cursor: grab; }
+input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 5px solid var(--accent); cursor: grab; }
+.bars { margin-top: 34px; display: grid; gap: 22px; }
+.bar-row .bar-label { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+.bar-row .bar-label b { color: var(--text); font-family: var(--mono); font-weight: 600; }
+.bar { height: 14px; border-radius: 999px; background: rgba(233, 238, 243, 0.32); transform-origin: left center; transition: width .5s var(--ease); }
+.bar.acp { background: var(--brand-grad); }
+.saving { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.saving > span { color: var(--muted); font-weight: 600; }
+.saving strong { font-family: var(--mono); font-weight: 600; font-size: clamp(1.8rem, 3.4vw, 2.6rem); color: var(--accent); letter-spacing: -0.03em; }
+.calc-note { color: var(--muted); font-size: 13px; margin-top: 18px; }
+
+/* Apps */
+.pigeon { margin-top: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--line-strong); background: var(--surface); }
+.pigeon-copy { padding: clamp(28px, 4vw, 56px); }
+.app-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); color: #FF9C8F; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 700; }
+.pigeon h3 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); margin-top: 18px; display: flex; align-items: center; gap: 14px; }
+.pigeon h3 i { color: var(--accent); }
+.pigeon-copy > p { color: var(--muted); margin-top: 14px; font-size: 1.08rem; max-width: 46ch; }
+.pigeon .points { grid-template-columns: 1fr; }
+.pigeon-copy .btn { margin-top: 32px; }
+.chat { background: var(--brand-grad); padding: clamp(24px, 3.5vw, 44px); display: flex; align-items: center; }
+.chat-window { width: 100%; background: rgba(6, 18, 29, 0.86); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.chat-top { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.chat-top i { font-size: 22px; color: #3DDC84; }
+.chat-top small { display: block; color: var(--muted); font-weight: 500; font-size: 11.5px; }
+.msg { max-width: 82%; padding: 10px 13px; border-radius: 12px; font-size: 13.5px; line-height: 1.45; }
+.msg.in { background: var(--surface-2); align-self: flex-start; border-bottom-left-radius: 4px; }
+.msg.out { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.msg small { display: block; font-size: 11px; opacity: 0.75; margin-top: 4px; }
+.msg.sys { align-self: center; max-width: 100%; background: transparent; color: var(--muted); font-size: 12px; font-family: var(--mono); display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; }
+.msg.sys i { color: #7FD1A8; }
+
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.cell { border-radius: var(--r-card); border: 1px solid var(--line); padding: 28px; background: var(--surface); display: flex; flex-direction: column; gap: 12px; min-height: 230px; position: relative; overflow: hidden; transition: border-color .3s var(--ease), transform .3s var(--ease); }
+.cell:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+.cell .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 24px; background: rgba(255,255,255,0.06); color: var(--text); }
+.cell h4 { font-size: 1.3rem; letter-spacing: -0.02em; margin-top: auto; }
+.cell p { color: var(--muted); font-size: 15px; max-width: 46ch; }
+.c-sdr { grid-column: span 4; background: radial-gradient(120% 140% at 100% 0%, rgba(231, 77, 74, 0.32), transparent 55%), var(--surface); }
+.c-sdr .ic { background: var(--accent); color: #fff; }
+.c-sdr h4 { font-size: 1.7rem; }
+.c-wa { grid-column: span 2; background: linear-gradient(180deg, rgba(61, 220, 132, 0.12), rgba(61, 220, 132, 0) 70%), var(--surface); }
+.c-wa .ic { color: #3DDC84; }
+.c-brain { grid-column: span 2; background: var(--navy); border-color: rgba(255,255,255,0.12); }
+.c-brain p { color: rgba(233,238,243,0.78); }
+.c-pf, .c-bayut { grid-column: span 2; }
+.c-meta { grid-column: span 6; min-height: 0; flex-direction: row; align-items: center; gap: 24px; background: linear-gradient(90deg, var(--surface) 0%, #12304A 100%); }
+.c-meta h4 { margin-top: 0; }
+.c-meta .meta-text { flex: 1; }
+.c-meta .ic { color: #6FA8FF; }
+.c-meta .flow { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+.c-meta .flow span { border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 12px; color: var(--text); }
+
+/* Verticals */
+.tabs { display: flex; gap: 8px; margin-top: 44px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.tab { background: none; border: 0; color: var(--muted); font: 700 16px "Manrope", sans-serif; padding: 14px 18px; cursor: pointer; position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.tab::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform .35s var(--ease); }
+.tab[aria-selected="true"] { color: var(--text); }
+.tab[aria-selected="true"]::after { transform: scaleX(1); }
+.tab i { font-size: 19px; }
+.tab-panel { padding-top: 44px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; }
+.tab-panel[hidden] { display: none; }
+.v-client { font-size: 14px; color: var(--muted); font-weight: 600; }
+.v-client b { color: var(--text); }
+.tab-panel h3 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin: 12px 0 0; max-width: 20ch; }
+.tab-panel .points { grid-template-columns: 1fr; margin-top: 24px; }
+.v-photo { border-radius: var(--r-card); overflow: hidden; position: relative; aspect-ratio: 16 / 10; margin-top: 28px; }
+.v-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.v-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(140deg, rgba(14, 58, 90, 0.78), rgba(231, 77, 74, 0.38)); mix-blend-mode: multiply; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-self: start; }
+.metric { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; }
+.metric .m-label { color: var(--muted); font-size: 14px; font-weight: 600; line-height: 1.5; }
+.metric:not(.wide) .m-label { min-height: 3em; }
+.metric .m-row { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.metric .m-before { font-family: var(--mono); color: var(--muted); font-size: 1.15rem; text-decoration: line-through; text-decoration-color: rgba(231,77,74,0.7); }
+.metric .m-row i { color: var(--accent); }
+.metric .m-after { font-family: var(--mono); font-weight: 600; font-size: clamp(1.9rem, 3vw, 2.5rem); letter-spacing: -0.04em; line-height: 1; }
+.metric.wide { grid-column: 1 / -1; background: var(--brand-grad); border-color: transparent; }
+.metric.wide .m-label, .metric.wide .m-before { color: rgba(255,255,255,0.8); }
+.metric.wide .m-row i { color: #fff; }
+.metric.wide .m-after small { font-size: 0.5em; margin-left: 8px; color: #fff; letter-spacing: 0; }
+.case-foot { grid-column: 1 / -1; color: var(--muted); font-size: 13.5px; }
+.built-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 32px; align-self: start; }
+.built-card h4 { font-size: 1.2rem; }
+.built-card p { color: var(--muted); margin-top: 12px; }
+.built-card .btn { margin-top: 24px; }
+.more-cases { margin-top: 72px; display: grid; grid-template-columns: auto 1fr 1fr; gap: 16px; align-items: stretch; }
+.more-cases > p { font-weight: 800; font-size: 1.2rem; align-self: center; padding-right: 24px; max-width: 12ch; line-height: 1.2; }
+.mini-case { border: 1px solid var(--line); border-radius: var(--r-card); padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+.mini-case b { font-size: 15px; }
+.mini-case span { color: var(--muted); font-size: 14.5px; font-family: var(--mono); }
+
+/* Process */
+.process-track { position: relative; margin-top: 72px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
+.process-line { position: absolute; left: 0; right: 0; top: 23px; height: 2px; background: var(--line-strong); }
+.process-line span { position: absolute; inset: 0; background: var(--brand-grad); transform-origin: left center; }
+.step { position: relative; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); border: 2px solid var(--line-strong); font-family: var(--mono); font-weight: 600; font-size: 15px; position: relative; z-index: 1; transition: border-color .4s, background .4s; }
+.step.on .step-num { border-color: var(--accent); background: var(--accent); color: #fff; }
+.step h4 { font-size: 1.3rem; margin-top: 22px; }
+.step p { color: var(--muted); font-size: 15px; margin-top: 10px; }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
+.contact-info .h2 { max-width: 14ch; }
+.promise { margin-top: 30px; display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-radius: var(--r-card); background: var(--accent-soft); font-weight: 600; }
+.promise i { color: var(--accent); font-size: 24px; flex: none; }
+.direct { margin-top: 32px; display: grid; gap: 14px; }
+.direct a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 700; }
+.direct a i { font-size: 22px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); }
+.direct a:hover i { border-color: var(--accent); color: var(--accent); }
+.form { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 18px; padding: clamp(24px, 3.5vw, 40px); display: grid; grid-template-columns: 1fr 1fr; gap: 18px 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field.full { grid-column: span 2; }
+.field label { font-size: 14px; font-weight: 700; color: var(--text); }
+.field label span { color: var(--muted); font-weight: 500; }
+.field input, .field select, .field textarea { width: 100%; font: 500 16px "Manrope", sans-serif; color: var(--text); background: #071827; border: 1px solid rgba(233, 238, 243, 0.22); border-radius: var(--r-input); padding: 13px 14px; transition: border-color .2s, box-shadow .2s; }
+.field textarea { resize: vertical; min-height: 110px; }
+.field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, #9AABBB 50%), linear-gradient(135deg, #9AABBB 50%, transparent 50%); background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px; }
+.field input::placeholder, .field textarea::placeholder { color: #8396A8; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(231, 77, 74, 0.25); }
+.field [aria-invalid="true"] { border-color: #FF7A72; }
+.err { color: #FF8F87; font-size: 13px; font-weight: 600; min-height: 0; }
+.err:empty { display: none; }
+.consent { grid-column: span 2; display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.consent-wrap { grid-column: span 2; display: flex; flex-direction: column; gap: 6px; }
+.hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+.form-foot { grid-column: span 2; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+.form .btn-primary { min-width: 260px; justify-content: center; position: relative; }
+.form .btn-primary:disabled { opacity: 0.7; cursor: progress; }
+.form.is-sending .btn-primary .label::after { content: "..."; }
+[data-form-status] { font-weight: 600; font-size: 15px; }
+.form.is-sent [data-form-status] { color: #7FD1A8; }
+.form.is-failed [data-form-status] { color: #FF8F87; }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); padding: 64px 0 40px; color: var(--muted); font-size: 15px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.foot-grid img { height: 36px; width: auto; margin-bottom: 18px; }
+.foot-grid h5 { color: var(--text); font-size: 14px; margin: 0 0 14px; font-weight: 700; }
+.foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.foot-grid a { text-decoration: none; }
+.foot-grid a:hover { color: var(--text); }
+.foot-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .process-track { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 48px; }
+  .process-line { display: none; }
+}
+@media (max-width: 960px) {
+  .hero-grid, .calc, .pigeon, .tab-panel, .contact-grid { grid-template-columns: 1fr; }
+  .stack-card .panel { grid-template-columns: 1fr; gap: 32px; }
+  .more-cases { grid-template-columns: 1fr 1fr; }
+  .more-cases > p { grid-column: span 2; max-width: none; }
+}
+@media (max-width: 767px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .section { padding: 80px 0; }
+  .hero { padding: calc(var(--nav-h) + 36px) 0 56px; min-height: 0; }
+  .pl-board { grid-template-columns: 1fr 1fr; }
+  .pl-col { min-height: 0; }
+  .pl-col { min-height: 128px; }
+  .pl-col .pl-card:nth-child(n+2) { display: none; }
+  .metric:not(.wide) .m-label { min-height: 0; }
+  .pl-won strong { font-size: 18px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stack-card { min-height: 0; padding: 12px 0; }
+  .points { grid-template-columns: 1fr; }
+  .bento { grid-template-columns: 1fr; }
+  .bento .cell { grid-column: auto; min-height: 0; }
+  .c-meta { flex-direction: column; align-items: flex-start; }
+  .c-meta .flow { flex-wrap: wrap; white-space: normal; }
+  .metrics { grid-template-columns: 1fr; }
+  .metric.wide, .case-foot { grid-column: auto; }
+  .more-cases { grid-template-columns: 1fr; }
+  .more-cases > p { grid-column: auto; }
+  .process-track { grid-template-columns: 1fr; gap: 32px; }
+  .form { grid-template-columns: 1fr; }
+  .field.full, .consent, .consent-wrap, .form-foot { grid-column: auto; }
+  .form .btn-primary { width: 100%; min-width: 0; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .calc-box { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="nav-logo" href="#top" aria-label="ACP GROUP home"><img src="../../assets/acp-logo-on-dark.svg" alt="ACP GROUP" width="147" height="40"></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#contact">Book a free consultation</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="ph ph-list"></i></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="#apps">Apps</a>
+  <a href="#work">Work</a>
+  <a href="#process">Process</a>
+  <a class="btn btn-primary" href="#contact">Book a free consultation</a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 data-hero>Your sales, <em>engineered.</em></h1>
+      <p data-hero>We build CRM systems, automations and AI agents that make your team sell more. Bitrix24 Gold Partner since 2018.</p>
+      <div class="hero-ctas" data-hero>
+        <a class="btn btn-primary" href="#contact">Book a free consultation <i class="ph ph-arrow-right"></i></a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
+      </div>
+    </div>
+
+    <!-- Live pipeline component: lead cards move across stages with GSAP Flip. Values are sample data. -->
+    <div class="pipeline" data-hero aria-label="Sample CRM pipeline, animated">
+      <div class="pl-head">
+        <div class="pl-title"><i class="ph ph-kanban"></i><div>Sales pipeline<br><small>Real estate, Dubai</small></div></div>
+        <div class="pl-won"><span>Won this month</span><strong>AED <span id="won">18,450,000</span></strong></div>
+      </div>
+      <div class="pl-board">
+        <div class="pl-col" data-stage="0"><header>New lead <b>2</b></header><div class="pl-list">
+          <div class="pl-card" data-v="1850000"><span class="pl-src"><i class="ph ph-whatsapp-logo"></i>WhatsApp</span><strong>2BR, Dubai Marina</strong><span class="pl-val">AED 1.85M</span></div>
+          <div class="pl-card" data-v="3100000"><span class="pl-src"><i class="ph ph-house-line"></i>Bayut</span><strong>Townhouse, Arabian Ranches</strong><span class="pl-val">AED 3.1M</span></div>
+        </div></div>
+        <div class="pl-col" data-stage="1"><header>Qualified <b>2</b></header><div class="pl-list">
+          <div class="pl-card" data-v="4200000"><span class="pl-src"><i class="ph ph-buildings"></i>Property Finder</span><strong>Villa viewing, Jumeirah</strong><span class="pl-val">AED 4.2M</span></div>
+          <div class="pl-card" data-v="980000"><span class="pl-src"><i class="ph ph-meta-logo"></i>Meta Lead Ads</span><strong>Studio, JVC</strong><span class="pl-val">AED 980K</span></div>
+        </div></div>
+        <div class="pl-col" data-stage="2"><header>Proposal <b>1</b></header><div class="pl-list">
+          <div class="pl-card" data-v="2650000"><span class="pl-src"><i class="ph ph-globe"></i>Website</span><strong>Office, Business Bay</strong><span class="pl-val">AED 2.65M</span></div>
+        </div></div>
+        <div class="pl-col" data-stage="3"><header>Won <b>2</b></header><div class="pl-list">
+          <div class="pl-card" data-v="5400000"><span class="pl-src"><i class="ph ph-buildings"></i>Property Finder</span><strong>Penthouse, Downtown</strong><span class="pl-val">AED 5.4M</span></div>
+          <div class="pl-card" data-v="1420000"><span class="pl-src"><i class="ph ph-whatsapp-logo"></i>WhatsApp</span><strong>3BR, Al Reem</strong><span class="pl-val">AED 1.42M</span></div>
+        </div></div>
+      </div>
+      <p class="pl-note">Live demo with sample data. Your pipeline, your stages, your sources.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust" aria-label="Partners, clients and numbers">
+  <div class="wrap">
+    <div class="trust-top" data-reveal>
+      <div class="badges">
+        <!-- TODO: replace with the official Bitrix24 Gold Partner badge file -->
+        <a class="badge" href="https://www.bitrix24.ae/partners/?ID=18059561" target="_blank" rel="noopener"><i class="ph-fill ph-seal-check"></i>Bitrix24 Gold Partner</a>
+        <!-- TODO: replace with the official Salesforce Partner badge file -->
+        <span class="badge sf"><i class="ph-fill ph-seal-check"></i>Salesforce Partner</span>
+      </div>
+      <!-- TODO: replace client wordmarks with real logo files (SVG, single color) and confirm spelling -->
+      <div class="clients" aria-label="Clients">
+        <span class="client serif">Wise &amp; Young</span>
+        <span class="client light">Elize Hospital</span>
+        <span class="client wide">FVL</span>
+        <span class="client">Astorts Group</span>
+      </div>
+    </div>
+    <div class="stats">
+      <!-- CONFIRM: projects and customers (site says 1,300+ and 900+) -->
+      <div class="stat" data-reveal><strong><span data-count="1000">1,000</span><sup>+</sup></strong><span>projects delivered</span></div>
+      <div class="stat" data-reveal><strong><span data-count="750">750</span><sup>+</sup></strong><span>customers</span></div>
+      <div class="stat" data-reveal><strong><span data-count="10">10</span><sup>+</sup></strong><span>countries</span></div>
+      <div class="stat" data-reveal><strong><span data-count="30">30</span><sup>+</sup></strong><span>certified specialists</span></div>
+      <div class="stat" data-reveal><strong><span data-count="2018" data-plain>2018</span></strong><span>in business since</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES: sticky stack -->
+<section id="services" aria-labelledby="services-h">
+  <div class="section services-intro"><div class="wrap">
+    <span class="eyebrow">What we do</span>
+    <h2 class="h2" id="services-h" data-reveal>Three ways we grow your revenue.</h2>
+  </div></div>
+  <div class="wrap stack">
+    <article class="stack-card">
+      <div class="panel panel-crm">
+        <div>
+          <span class="kicker"><i class="ph ph-kanban"></i>CRM</span>
+          <h3>One system for every deal.</h3>
+          <p class="body">We design, implement and run Bitrix24 and Salesforce. Every lead, call and message lands in one place, with clear pipelines and dashboards.</p>
+          <ul class="points">
+            <li><i class="ph ph-check"></i>Discovery and sales-process audit</li>
+            <li><i class="ph ph-check"></i>Bitrix24 implementation and customization</li>
+            <li><i class="ph ph-check"></i>Salesforce implementation</li>
+            <li><i class="ph ph-check"></i>Data migration from spreadsheets or other CRMs</li>
+            <li><i class="ph ph-check"></i>Role-based training for sales, managers and leadership</li>
+          </ul>
+        </div>
+        <div class="panel-side">
+          <div class="label">Unified Sales Solution</div>
+          <div class="big">20,000 AED</div>
+          <div class="small">A complete sales system. Fixed price.</div>
+          <a class="btn btn-ghost" href="#contact">Book a free consultation <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+    <article class="stack-card">
+      <div class="panel panel-auto">
+        <div>
+          <span class="kicker"><i class="ph ph-flow-arrow"></i>Business automation</span>
+          <h3>Let the system do the follow-up.</h3>
+          <p class="body">We connect your channels, portals and tools to the CRM and automate the routine. Your team spends its time selling.</p>
+          <ul class="points">
+            <li><i class="ph ph-check"></i>n8n and Bitrix24 workflow automation</li>
+            <li><i class="ph ph-check"></i>WhatsApp, WABA and telephony integration</li>
+            <li><i class="ph ph-check"></i>Lead capture from portals, ads and web forms</li>
+            <li><i class="ph ph-check"></i>AI call analysis: transcripts, script checks and coaching</li>
+            <li><i class="ph ph-check"></i>AI SDR agents that qualify leads 24/7</li>
+          </ul>
+        </div>
+        <div class="panel-side">
+          <div class="label">AI call analysis, real case</div>
+          <div class="proof" style="margin-top:18px">
+            <div><strong class="mono">-30%</strong><span>calls without discovery</span></div>
+            <div><strong class="mono">-70%</strong><span>manual QA time</span></div>
+            <div><strong class="mono">+10%</strong><span>stage conversion</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="stack-card">
+      <div class="panel panel-mos">
+        <div>
+          <span class="kicker"><i class="ph ph-users-three"></i>Consulting and managed service (MOS)</span>
+          <h3>Your CRM team, outsourced.</h3>
+          <p class="body">MOS is a monthly service. Our CRM managers, analysts and developers improve your system every month, for less than one in-house hire.</p>
+          <ul class="points">
+            <li><i class="ph ph-check"></i>Monthly optimization sprints</li>
+            <li><i class="ph ph-check"></i>New automations, reports and dashboards</li>
+            <li><i class="ph ph-check"></i>Data quality and user adoption</li>
+            <li><i class="ph ph-check"></i>Priority support</li>
+          </ul>
+        </div>
+        <div class="panel-side">
+          <div class="label">MOS monthly service</div>
+          <div class="big">from $750</div>
+          <div class="small">per month. Typical mid-level scope $750-800.</div>
+          <a class="btn btn-ghost" href="#pricing">Compare the cost <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MOS CALCULATOR -->
+<section class="section" id="pricing" aria-labelledby="calc-h">
+  <div class="wrap calc">
+    <div data-reveal>
+      <h2 class="h2" id="calc-h">One hire, or a full team?</h2>
+      <p class="lead">One in-house CRM manager costs salary, visa, training and leave. MOS gives you managers, analysts and developers for one monthly fee.</p>
+      <p class="lead" style="margin-top:12px">SOG is the same service for Portuguese-speaking markets.</p>
+    </div>
+    <div class="calc-box" data-reveal>
+      <label for="salary">In-house CRM manager, monthly cost (AED)<small>Your estimate. Include salary, visa, training and leave.</small></label>
+      <div class="range-row">
+        <input type="range" id="salary" min="8000" max="40000" step="500" value="18000">
+        <output for="salary" id="salary-out">18,000</output>
+      </div>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label">In-house CRM manager <b><span id="inhouse-m">18,000</span> AED / month</b></div>
+          <div class="bar" id="bar-inhouse" style="width:100%"></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ACP MOS, full team <b>from <span id="acp-m">2,755</span> AED / month</b></div>
+          <div class="bar acp" id="bar-acp" style="width:15.3%"></div>
+        </div>
+      </div>
+      <div class="saving"><span>Your estimated saving per year</span><strong>AED <span id="saving">182,940</span></strong></div>
+      <p class="calc-note">MOS from $750 per month, converted at 3.6725 AED per USD. Final scope and price after your free consultation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section class="section" id="apps" aria-labelledby="apps-h">
+  <div class="wrap">
+    <span class="eyebrow">Our apps</span>
+    <h2 class="h2" id="apps-h" data-reveal>Built in-house. Running in your CRM.</h2>
+    <p class="lead" data-reveal>Connectors and AI agents for Bitrix24 and other CRMs, made from real client projects.</p>
+
+    <article class="pigeon" data-reveal>
+      <div class="pigeon-copy">
+        <span class="app-tag"><i class="ph-fill ph-seal-check"></i>Flagship</span>
+        <h3><i class="ph ph-chats-circle"></i>Pigeon</h3>
+        <p>WABA, WhatsApp, chatbots and AI agents inside Bitrix24. One inbox for every conversation, with bots that answer and route.</p>
+        <ul class="points">
+          <li><i class="ph ph-check"></i>Official WhatsApp Business API and WhatsApp numbers</li>
+          <li><i class="ph ph-check"></i>Chatbots that answer and route to the right agent</li>
+          <li><i class="ph ph-check"></i>AI agents that reply with your products and prices</li>
+          <li><i class="ph ph-check"></i>Every chat saved on the CRM card</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">Book a free consultation <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="chat">
+        <!-- Live chat preview: messages appear in sequence on scroll. Sample conversation. -->
+        <div class="chat-window" aria-label="Sample Pigeon conversation">
+          <div class="chat-top"><i class="ph-fill ph-whatsapp-logo"></i><div>Client on WhatsApp<small>Pigeon inbox in Bitrix24</small></div></div>
+          <div class="msg in" data-chat>Hi, is the 2BR in Dubai Marina still available?<small>10:42</small></div>
+          <div class="msg out" data-chat>Yes. It is available from next month. Do you want to book a viewing this week?<small>AI agent, 10:42</small></div>
+          <div class="msg in" data-chat>Thursday after 5 pm works.<small>10:43</small></div>
+          <div class="msg sys" data-chat><i class="ph ph-check"></i>Deal created and assigned to Sales</div>
+          <div class="msg out" data-chat>Booked for Thursday, 5:30 pm. Your agent will confirm.<small>AI agent, 10:43</small></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="bento">
+      <article class="cell c-sdr" data-reveal>
+        <div class="ic"><i class="ph ph-robot"></i></div>
+        <h4>AI SDR</h4>
+        <p>An AI sales agent that replies to new leads in seconds, qualifies them and books calls into your calendar.</p>
+      </article>
+      <article class="cell c-wa" data-reveal>
+        <div class="ic"><i class="ph ph-whatsapp-logo"></i></div>
+        <h4>WhatsApp Connector</h4>
+        <p>Connect WhatsApp numbers to Bitrix24 open channels. Chats, files and history on the CRM card.</p>
+      </article>
+      <article class="cell c-brain" data-reveal>
+        <div class="ic"><i class="ph ph-brain"></i></div>
+        <h4>AI Brains</h4>
+        <p>AI agents trained on your products, prices and processes. They answer clients and help your team inside the CRM.</p>
+      </article>
+      <article class="cell c-pf" data-reveal>
+        <div class="ic"><i class="ph ph-buildings"></i></div>
+        <h4>Property Finder Connector</h4>
+        <p>Property Finder leads and listings flow into Bitrix24 pipelines in real time.</p>
+      </article>
+      <article class="cell c-bayut" data-reveal>
+        <div class="ic"><i class="ph ph-house-line"></i></div>
+        <h4>Bayut Connector</h4>
+        <p>Bayut leads go straight to the right agent in Bitrix24, with source tracking.</p>
+      </article>
+      <article class="cell c-meta" data-reveal>
+        <div class="ic"><i class="ph ph-meta-logo"></i></div>
+        <div class="meta-text">
+          <h4>Meta Lead Ads Connector</h4>
+          <p>Facebook and Instagram Instant Form leads arrive in Bitrix24 in seconds, with campaign data.</p>
+        </div>
+        <div class="flow" aria-hidden="true"><span>Instant Form</span><i class="ph ph-arrow-right"></i><span>Bitrix24 lead</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section class="section" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <span class="eyebrow">Our work</span>
+    <h2 class="h2" id="work-h" data-reveal>Proven where sales move fast.</h2>
+
+    <div class="tabs" role="tablist" aria-label="Verticals">
+      <button class="tab" role="tab" id="t-re" aria-controls="p-re" aria-selected="true"><i class="ph ph-buildings"></i>Real estate</button>
+      <button class="tab" role="tab" id="t-hc" aria-controls="p-hc" aria-selected="false" tabindex="-1"><i class="ph ph-heartbeat"></i>Healthcare</button>
+      <button class="tab" role="tab" id="t-fs" aria-controls="p-fs" aria-selected="false" tabindex="-1"><i class="ph ph-bank"></i>Financial services</button>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="p-re" aria-labelledby="t-re">
+      <div>
+        <!-- CONFIRM client name spelling -->
+        <p class="v-client">Clients include <b>Wise &amp; Young Real Estate</b>, Dubai</p>
+        <h3>From missed inquiries to closed deals.</h3>
+        <ul class="points">
+          <li><i class="ph ph-check"></i>Property Finder and Bayut connectors</li>
+          <li><i class="ph ph-check"></i>WhatsApp inbox for every agent</li>
+          <li><i class="ph ph-check"></i>Lead routing to the right agent</li>
+          <li><i class="ph ph-check"></i>Nurture pipeline for clients not ready to buy</li>
+        </ul>
+        <!-- TODO: add a real project photo or Bitrix24 screenshot here (class "v-photo", 1600x1000). No stock photos. -->
+      </div>
+      <div class="metrics" data-metrics>
+        <div class="metric"><div class="m-label">Missed inquiries</div><div class="m-row"><span class="m-before">35%</span><i class="ph ph-arrow-right"></i><span class="m-after"><span data-count="5">5</span>%</span></div></div>
+        <div class="metric"><div class="m-label">Lead-to-deal conversion</div><div class="m-row"><span class="m-before">7%</span><i class="ph ph-arrow-right"></i><span class="m-after"><span data-count="15">15</span>%</span></div></div>
+        <div class="metric"><div class="m-label">Deal cycle, days</div><div class="m-row"><span class="m-before">90</span><i class="ph ph-arrow-right"></i><span class="m-after"><span data-count="45">45</span></span></div></div>
+        <div class="metric wide"><div class="m-label">Monthly sales</div><div class="m-row"><span class="m-before">3.0M AED</span><i class="ph ph-arrow-right"></i><span class="m-after"><span data-count="5.5" data-dec="1">5.5</span>M AED<small>+83%</small></span></div></div>
+        <p class="case-foot">Dubai and Sharjah agency, results after 6 months.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="p-hc" aria-labelledby="t-hc" hidden>
+      <div>
+        <!-- CONFIRM client name spelling -->
+        <p class="v-client">Clients include <b>Elize Hospital</b>, UAE</p>
+        <h3>Every patient inquiry followed up.</h3>
+        <ul class="points">
+          <li><i class="ph ph-check"></i>Patient inquiry pipelines</li>
+          <li><i class="ph ph-check"></i>Appointment follow-up</li>
+          <li><i class="ph ph-check"></i>WhatsApp communication with patients</li>
+          <li><i class="ph ph-check"></i>Call quality analysis</li>
+        </ul>
+      </div>
+      <!-- TODO: add 2-3 result numbers from Elize Hospital (ask client). Do not publish invented numbers. -->
+      <div class="built-card">
+        <h4>Ask us for the full case.</h4>
+        <p>We walk you through the healthcare setup in your free consultation: pipelines, automations and reports.</p>
+        <!-- TODO: add a real project photo or Bitrix24 screenshot here (class "v-photo", 1600x1000). No stock photos. -->
+        <a class="btn btn-ghost" href="#contact">Book a free consultation <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="p-fs" aria-labelledby="t-fs" hidden>
+      <div>
+        <!-- CONFIRM client names and that Astorts Group belongs in this vertical -->
+        <p class="v-client">Clients include <b>FVL</b>, Brazil, and <b>Astorts Group</b></p>
+        <h3>Compliance-ready sales across entities.</h3>
+        <ul class="points">
+          <li><i class="ph ph-check"></i>Multi-entity and multi-currency CRM</li>
+          <li><i class="ph ph-check"></i>Compliance-ready pipelines</li>
+          <li><i class="ph ph-check"></i>n8n automations between CRM and back-office systems</li>
+        </ul>
+      </div>
+      <!-- TODO: add 2-3 result numbers from FVL / Astorts Group (ask client). Do not publish invented numbers. -->
+      <div class="built-card">
+        <h4>Ask us for the full case.</h4>
+        <p>We walk you through the financial services setup in your free consultation: entities, currencies and integrations.</p>
+        <!-- TODO: add a real project photo or Bitrix24 screenshot here (class "v-photo", 1600x1000). No stock photos. -->
+        <a class="btn btn-ghost" href="#contact">Book a free consultation <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="more-cases" data-reveal>
+      <p>More proven cases</p>
+      <div class="mini-case"><b>Manufacturing</b><span>Repeat customers 20% to 35%</span><span>Monthly sales 5.0M to 7.5M AED (+50%)</span></div>
+      <div class="mini-case"><b>IT services</b><span>Conversion 8% to 20%</span><span>Revenue 200K to 400K AED per month (2x)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process" aria-labelledby="process-h">
+  <div class="wrap">
+    <h2 class="h2" id="process-h" data-reveal>How we work.</h2>
+    <div class="process-track">
+      <div class="process-line" aria-hidden="true"><span></span></div>
+      <div class="step"><div class="step-num">1</div><h4>Discovery</h4><p>We audit your sales process, channels and data.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Blueprint</h4><p>We map pipelines, roles, automations and reports for your approval.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Build</h4><p>We configure the CRM, connect channels and automate.</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Train</h4><p>We train each role and record video guides.</p></div>
+      <div class="step"><div class="step-num">5</div><h4>Improve</h4><p>We monitor use and improve the system every month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div class="contact-info" data-reveal>
+      <h2 class="h2" id="contact-h">Book a free consultation.</h2>
+      <p class="lead">Tell us about your sales process. We study it and propose a plan in a 30-minute call. No cost.</p>
+      <!-- CONFIRM: Arabic consultations -->
+      <div class="promise"><i class="ph ph-lightning"></i><span>We reply within 15 minutes in working hours. Consultations in English, Portuguese and Arabic.</span></div>
+      <div class="direct">
+        <a href="https://wa.me/971557801481" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i>Message us on WhatsApp</a>
+        <a href="mailto:info@acp-24.com"><i class="ph ph-envelope-simple"></i>info@acp-24.com</a>
+        <a href="tel:+971557801481"><i class="ph ph-phone"></i>+971 55 780 1481</a>
+      </div>
+    </div>
+
+    <form class="form" data-lead-form action="/api/lead" novalidate data-reveal>
+      <div class="field">
+        <label for="f-name">Full name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+        <p class="err" data-error-for="name"></p>
+      </div>
+      <div class="field">
+        <label for="f-company">Company</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" required>
+        <p class="err" data-error-for="company"></p>
+      </div>
+      <div class="field">
+        <label for="f-email">Work email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+        <p class="err" data-error-for="email"></p>
+      </div>
+      <div class="field">
+        <label for="f-phone">WhatsApp / phone</label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+971" required>
+        <p class="err" data-error-for="phone"></p>
+      </div>
+      <div class="field">
+        <label for="f-country">Country</label>
+        <input id="f-country" name="country" type="text" autocomplete="country-name" required>
+        <p class="err" data-error-for="country"></p>
+      </div>
+      <div class="field">
+        <label for="f-team">Team size <span>(optional)</span></label>
+        <select id="f-team" name="team">
+          <option value="">Select</option>
+          <option value="1-10">1-10</option>
+          <option value="11-50">11-50</option>
+          <option value="51-200">51-200</option>
+          <option value="200+">200+</option>
+        </select>
+        <p class="err" data-error-for="team"></p>
+      </div>
+      <div class="field full">
+        <label for="f-interest">Main interest <span>(optional)</span></label>
+        <select id="f-interest" name="interest">
+          <option value="">Select</option>
+          <option value="crm">CRM</option>
+          <option value="automation">Business automation</option>
+          <option value="consulting">Consulting &amp; MOS</option>
+          <option value="apps">Apps &amp; connectors</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+        <p class="err" data-error-for="interest"></p>
+      </div>
+      <div class="field full">
+        <label for="f-message">Message <span>(optional)</span></label>
+        <textarea id="f-message" name="message" rows="4"></textarea>
+        <p class="err" data-error-for="message"></p>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">Website</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="template" value="a">
+      <div class="consent-wrap">
+        <label class="consent"><input type="checkbox" name="consent" required><span>I agree that ACP GROUP processes my data to answer this request. <a href="/policy">Privacy policy</a></span></label>
+        <p class="err" data-error-for="consent"></p>
+      </div>
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit"><span class="label">Book a free consultation</span></button>
+        <p data-form-status role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="../../assets/acp-logo-on-dark.svg" alt="ACP GROUP" width="147" height="40">
+        <p>Dubai Silicon Oasis, DDP, Building A1, Dubai, UAE</p>
+        <p style="margin-top:8px">Offices in Dubai, Brazil and Portugal.</p>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@acp-24.com">info@acp-24.com</a></li>
+          <li><a href="tel:+971557801481">+971 55 780 1481</a></li>
+          <li><a href="https://wa.me/971557801481" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/acp-group" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://kb.acp-24.com/" target="_blank" rel="noopener">Knowledge base</a></li>
+          <li><a href="https://acp-24.com.br/" target="_blank" rel="noopener">Brazil site</a></li>
+          <li><a href="/policy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 ACP GROUP. All rights reserved.</span>
+      <span>Bitrix24 Gold Certified Partner</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script src="../../assets/lead-form.js" defer></script>
+<script>
+(function () {
+  var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+
+  // Mobile menu
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    toggle.innerHTML = open ? '<i class="ph ph-x"></i>' : '<i class="ph ph-list"></i>';
+  }
+  toggle.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+
+  // Verticals tabs (keyboard: arrow keys)
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (window.gsap && !reduce) {
+      var panel = document.getElementById(tab.getAttribute('aria-controls'));
+      gsap.fromTo(panel.children, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+      countUp(panel.querySelectorAll('[data-count]'));
+    }
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      next.focus(); selectTab(next);
+    });
+  });
+
+  // MOS cost comparison
+  var AED_PER_USD = 3.6725, MOS_USD = 750;
+  var acpMonthly = MOS_USD * AED_PER_USD;
+  var slider = document.getElementById('salary');
+  function updateCalc() {
+    var v = Number(slider.value);
+    document.getElementById('salary-out').textContent = fmt(v);
+    document.getElementById('inhouse-m').textContent = fmt(v);
+    document.getElementById('acp-m').textContent = fmt(acpMonthly);
+    document.getElementById('saving').textContent = fmt(Math.max(0, (v - acpMonthly) * 12));
+    document.getElementById('bar-acp').style.width = Math.min(100, acpMonthly / v * 100) + '%';
+    slider.style.setProperty('--p', ((v - slider.min) / (slider.max - slider.min) * 100) + '%');
+  }
+  slider.addEventListener('input', updateCalc);
+  updateCalc();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function countUp(els) {
+    if (!window.gsap || reduce) return;
+    Array.prototype.forEach.call(els, function (el) {
+      var end = parseFloat(el.dataset.count), dec = Number(el.dataset.dec || 0);
+      var start = el.hasAttribute('data-plain') ? end - 8 : 0;
+      var o = { v: start };
+      gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: function () {
+        el.textContent = dec ? o.v.toFixed(dec) : (el.hasAttribute('data-plain') ? Math.round(o.v) : fmt(o.v));
+      } });
+    });
+  }
+
+  if (!window.gsap || reduce) return;
+  gsap.registerPlugin(ScrollTrigger, Flip);
+
+  // Hero entrance
+  gsap.from('[data-hero]', { y: 32, autoAlpha: 0, duration: 1, stagger: 0.12, ease: 'power3.out', delay: 0.1 });
+
+  // Generic reveals
+  gsap.set('[data-reveal]', { autoAlpha: 0, y: 28 });
+  ScrollTrigger.batch('[data-reveal]', {
+    start: 'top 88%', once: true,
+    onEnter: function (b) { gsap.to(b, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' }); }
+  });
+
+  // Stats count-up
+  ScrollTrigger.create({ trigger: '.stats', start: 'top 85%', once: true, onEnter: function () { countUp(document.querySelectorAll('.stats [data-count]')); } });
+  ScrollTrigger.create({ trigger: '[data-metrics]', start: 'top 80%', once: true, onEnter: function () { countUp(document.querySelectorAll('#p-re [data-count]')); } });
+
+  // Services sticky stack (desktop only). Each card pins at viewport top; the next card shrinks the previous one.
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 768px)', function () {
+    var cards = gsap.utils.toArray('.stack-card');
+    cards.forEach(function (card, i) {
+      if (i === cards.length - 1) return;
+      ScrollTrigger.create({ trigger: card, start: 'top top', endTrigger: cards[cards.length - 1], end: 'top top', pin: true, pinSpacing: false });
+      gsap.to(card.querySelector('.panel'), {
+        scale: 0.92, autoAlpha: 0.45, ease: 'none',
+        scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top top', scrub: true }
+      });
+    });
+  });
+
+  // Process line drawn on scroll; steps light up as the line passes them.
+  mm.add('(min-width: 1101px)', function () {
+    var steps = gsap.utils.toArray('.step');
+    gsap.fromTo('.process-line span', { scaleX: 0 }, {
+      scaleX: 1, ease: 'none',
+      scrollTrigger: {
+        trigger: '.process-track', start: 'top 75%', end: 'bottom 55%', scrub: 0.6,
+        onUpdate: function (st) { steps.forEach(function (s, i) { s.classList.toggle('on', st.progress >= i / (steps.length - 1) - 0.02); }); }
+      }
+    });
+  });
+  mm.add('(max-width: 1100px)', function () {
+    gsap.utils.toArray('.step').forEach(function (s) {
+      ScrollTrigger.create({ trigger: s, start: 'top 75%', once: true, onEnter: function () { s.classList.add('on'); } });
+    });
+  });
+
+  // Pigeon chat: messages appear in sequence
+  gsap.set('[data-chat]', { autoAlpha: 0, y: 12 });
+  ScrollTrigger.create({ trigger: '.chat-window', start: 'top 75%', once: true, onEnter: function () {
+    gsap.to('[data-chat]', { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.7, ease: 'power2.out' });
+  } });
+
+  // Hero pipeline: calm, sample-data simulation
+  var cols = Array.prototype.slice.call(document.querySelectorAll('.pl-col'));
+  var lists = cols.map(function (c) { return c.querySelector('.pl-list'); });
+  var wonEl = document.getElementById('won');
+  var won = 18450000;
+  var POOL = [
+    ['ph-whatsapp-logo', 'WhatsApp', 'Apartment, Palm Jumeirah', 3600000],
+    ['ph-buildings', 'Property Finder', '1BR, Business Bay', 1250000],
+    ['ph-house-line', 'Bayut', 'Villa, Dubai Hills', 6800000],
+    ['ph-meta-logo', 'Meta Lead Ads', '2BR, Creek Harbour', 2150000],
+    ['ph-globe', 'Website', 'Retail unit, JLT', 1900000],
+    ['ph-whatsapp-logo', 'WhatsApp', 'Townhouse, Damac Hills', 2700000],
+    ['ph-buildings', 'Property Finder', 'Studio, Al Furjan', 720000],
+    ['ph-house-line', 'Bayut', '3BR, Sharjah Waterfront', 1600000]
+  ];
+  var poolIdx = 0;
+  function money(v) { return v >= 1e6 ? 'AED ' + (v / 1e6).toFixed(v % 1e6 ? 2 : 1).replace(/0$/, '') + 'M' : 'AED ' + Math.round(v / 1e3) + 'K'; }
+  function makeCard(p) {
+    var d = document.createElement('div');
+    d.className = 'pl-card'; d.dataset.v = p[3];
+    d.innerHTML = '<span class="pl-src"><i class="ph ' + p[0] + '"></i>' + p[1] + '</span><strong>' + p[2] + '</strong><span class="pl-val">' + money(p[3]) + '</span>';
+    return d;
+  }
+  function counts() { cols.forEach(function (c, i) { c.querySelector('header b').textContent = lists[i].children.length; }); }
+  var mobile = window.matchMedia('(max-width: 767px)');
+  function animateMove(mutate) {
+    // Mobile shows one card per stage: no Flip (absolute positioning overlaps), just fade the new top cards in.
+    if (mobile.matches) {
+      var before = lists.map(function (l) { return l.firstElementChild; });
+      mutate();
+      counts();
+      lists.forEach(function (l, i) {
+        if (l.firstElementChild && l.firstElementChild !== before[i]) gsap.fromTo(l.firstElementChild, { autoAlpha: 0, y: -8 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+      });
+      return;
+    }
+    var state = Flip.getState('.pl-card');
+    mutate();
+    counts();
+    Flip.from(state, {
+      duration: 0.9, ease: 'power2.inOut', absolute: true, nested: true,
+      onEnter: function (els) { return gsap.fromTo(els, { autoAlpha: 0, y: -14, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out' }); },
+      onLeave: function (els) { return gsap.to(els, { autoAlpha: 0, scale: 0.94, duration: 0.4 }); }
+    });
+  }
+  function oldest(list) { return list.lastElementChild; }
+  function trimWon() { while (lists[3].children.length > 3) lists[3].removeChild(lists[3].lastElementChild); }
+  function tick() {
+    var r = Math.random();
+    if (lists[2].children.length && (r < 0.35 || lists[2].children.length >= 3)) {
+      var card = oldest(lists[2]);
+      animateMove(function () { lists[3].prepend(card); trimWon(); });
+      var target = won + Number(card.dataset.v), o = { v: won };
+      won = target;
+      gsap.to(o, { v: target, duration: 1.4, ease: 'power2.out', onUpdate: function () { wonEl.textContent = fmt(o.v); } });
+    } else if (lists[1].children.length && (r < 0.6 || lists[1].children.length >= 3)) {
+      var c1 = oldest(lists[1]);
+      animateMove(function () { lists[2].prepend(c1); });
+    } else if (lists[0].children.length >= 2 || (lists[0].children.length && r < 0.75)) {
+      var c0 = oldest(lists[0]);
+      animateMove(function () { lists[1].prepend(c0); });
+    } else {
+      var p = POOL[poolIdx++ % POOL.length];
+      animateMove(function () { lists[0].prepend(makeCard(p)); });
+    }
+  }
+  // Run only while the pipeline is on screen and the tab is visible.
+  var timer = null, onScreen = false;
+  function sync() {
+    var run = onScreen && !document.hidden;
+    if (run && !timer) timer = setInterval(tick, 2300);
+    if (!run && timer) { clearInterval(timer); timer = null; }
+  }
+  new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; sync(); }, { threshold: 0.2 }).observe(document.querySelector('.pipeline'));
+  document.addEventListener('visibilitychange', sync);
+})();
+</script>
+</body>
+</html>
